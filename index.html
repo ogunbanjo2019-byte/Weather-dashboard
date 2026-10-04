@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Atmos — live weather and forecast dashboard." />
+  <title>Atmos — Weather dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="theme-clear">
+  <div class="weather-art" aria-hidden="true"><span class="sun-art"></span><span class="cloud-art cloud-one"></span><span class="cloud-art cloud-two"></span><span class="rain-art"></span></div>
+  <header class="topbar"><div class="container topbar-inner"><a class="brand" href="#main" aria-label="Atmos home"><span class="brand-icon">◒</span><span>atmos<span class="brand-dot">.</span></span></a><div class="topbar-meta"><span class="live-dot"></span> Live data <span class="meta-divider"></span><span id="last-updated">Updated just now</span></div><button class="unit-toggle" id="unit-toggle" type="button" aria-label="Switch between Celsius and Fahrenheit" aria-pressed="false"><span class="unit-active">°C</span><span>°F</span></button></div></header>
+  <main class="container" id="main">
+    <section class="search-section"><div><p class="kicker">YOUR WEATHER, IN FOCUS</p><h1>How's the sky<br /><em>looking today?</em></h1></div><form class="search-form" id="search-form"><label class="search-box"><span class="search-symbol">⌕</span><input id="city-input" type="search" placeholder="Search a city..." autocomplete="off" aria-label="Search for a city" /><button type="submit" aria-label="Search">Search <span>↗</span></button></label><button class="location-button" id="location-button" type="button"><span>⌖</span> Use current location</button></form></section>
+    <div class="alert" id="alert" role="alert" hidden></div>
+    <section class="dashboard-grid" id="dashboard" aria-live="polite">
+      <article class="current-card weather-card"><div class="card-top"><div><span class="location-pin">⌖</span><span id="current-city">San Francisco, CA</span><small id="current-country">United States</small></div><span class="card-menu">•••</span></div><div class="current-main"><div><p class="today-label" id="current-date">Tuesday, October 8</p><div class="temperature"><strong id="current-temp">64</strong><span id="current-unit">°F</span></div><p class="condition" id="current-condition">Partly cloudy</p><p class="feels">Feels like <b id="feels-like">63°</b></p></div><div class="current-icon" id="current-icon" aria-label="Partly cloudy">🌤️</div></div><div class="sun-progress"><div class="sun-times"><span>☼ <b id="sunrise">7:12 AM</b></span><span><b id="sunset">6:42 PM</b> ☾</span></div><div class="progress-track"><span id="day-progress"></span><i></i></div></div></article>
+      <article class="metric-card metric-humidity"><div class="metric-label"><span class="metric-icon">◌</span><span>Humidity</span></div><strong id="humidity">68%</strong><small>Comfortable</small><div class="metric-graphic humidity-graphic"><i></i><i></i><i></i><i></i><i></i></div></article>
+      <article class="metric-card metric-wind"><div class="metric-label"><span class="metric-icon">≋</span><span>Wind</span></div><strong id="wind">12 <small>mph</small></strong><small id="wind-direction">NW · Gentle breeze</small><div class="wind-graphic"><span>NW</span><i></i><b>SE</b></div></article>
+      <article class="metric-card metric-pressure"><div class="metric-label"><span class="metric-icon">⌁</span><span>Pressure</span></div><strong id="pressure">1018 <small>hPa</small></strong><small>Steady conditions</small><div class="pressure-graphic"><span></span><span></span><span></span><span></span><span></span></div></article>
+      <article class="metric-card metric-uv"><div class="metric-label"><span class="metric-icon">☼</span><span>UV index</span></div><strong id="uv-index">4 <small>Moderate</small></strong><small>Protection recommended</small><div class="uv-scale"><span></span><span></span><span></span><span></span><span></span><i></i></div></article>
+    </section>
+    <section class="forecast-section"><div class="section-heading"><div><p class="kicker">THE WEEK AHEAD</p><h2>Forecast <span>·</span> <button class="forecast-tab active" type="button">5 days</button><button class="forecast-tab" type="button">Hourly</button></h2></div><span class="forecast-note">Scroll to explore <b>→</b></span></div><div class="forecast-list" id="forecast-list"></div></section>
+    <section class="insight-strip"><span class="insight-icon">✦</span><div><strong id="insight-title">A good day for getting outside</strong><p id="insight-copy">The afternoon looks comfortable and clear. Don't forget your sunglasses.</p></div><span class="insight-arrow">↗</span></section>
+  </main>
+  <footer class="footer"><div class="container"><span>Atmos weather dashboard</span><span>Data provided by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a> · Free & open source</span></div></footer>
+  <template id="skeleton-template"><article class="forecast-card skeleton-card"><div class="skeleton skeleton-day"></div><div class="skeleton skeleton-icon"></div><div class="skeleton skeleton-temp"></div><div class="skeleton skeleton-line"></div></article></template>
+</body>
+</html>
